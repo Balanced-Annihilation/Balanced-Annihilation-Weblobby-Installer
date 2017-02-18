@@ -1,0 +1,78 @@
+@import globals
+@import sizing
+@import chili
+
+.battleRoom
+	$panelHeight: 10.5em
+	$rightWidth: 40em
+	$chatHeight: 50%
+	height: 100%
+	> *
+		+setHeight(100%)
+		float: left
+	.leftSide
+		width: calc(100% - #{$rightWidth})
+		//.battleMap
+	.rightSide
+		width: $rightWidth
+		position: relative
+		.battlePanel
+			+setHeight($panelHeight)
+		.userList
+			+setHeight(calc(100% - #{$panelHeight}))
+	.rightSide.withChat
+		.userList
+			+setHeight(calc(100% - #{$panelHeight} - #{$chatHeight}))
+		.votingBar
+			position: absolute
+			top: calc(100% - #{$chatHeight})
+			+setWidth(100%)
+		.battleChat
+			+setHeight(#{$chatHeight})
+			.chatLog
+				+setHeight(calc(100% - #{$chatInputHeight}))
+			.chatInput
+				+setHeight($chatInputHeight)
+				padding-top: 1px
+
+.battleRoom .modoptions .modalWindow
+	.modalContent
+		background: #111
+	.settingList
+		max-height: 80vh
+		overflow: auto
+
+.votingBar
+	max-height: 0
+	overflow: hidden
+	transition-property: max-height
+	transition-duration: 300ms
+.votingBar.show
+	+chili3dBox
+	max-height: 25%
+	overflow: auto
+	background: black
+	background-clip: padding-box
+	padding: 0.5em
+	line-height: 2em
+	word-break: break-all
+	button
+		width: 3em
+	.progressBar
+		width: calc(100% - 6em)
+
+.botDialog > div
+	margin: 0.8em 0
+	max-width: 20em
+	position: relative
+	.botColor
+		display: inline-block
+		width: 2em
+		height: 1.2em
+		cursor: pointer
+		&:hover
+			outline: 1px dotted #ccc
+	.teamColorPicker
+		position: absolute
+		top: 1.4em
+		z-index: 1

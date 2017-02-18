@@ -1,0 +1,88 @@
+@import globals
+@import chili
+
+body
+	color: white
+	background-color: #111
+	font-family: $mainFont
+	font-size: small
+
+html, body, #main
+	position: absolute
+	height: 100%
+	width: 100%
+	margin: 0
+
+#main
+	padding: 1.0em
+	padding-top: 0
+	box-sizing: border-box
+
+a
+	color: $selectedColor
+
+input[type="text"], input[type="password"], select, textarea
+	font-family: $mainFont
+	color: white
+	border: 1px solid #333
+	background-color: #201F1F
+	outline: none
+	height: 1.7em
+	&:focus
+		border: 1px solid rgb(45, 75, 122)
+
+input[type="checkbox"]
+	-webkit-appearance: none
+	&:before
+		// dummy content to prevent phantom margins
+		content: 'x'
+		color: transparent
+		font-size: 1.1em
+		display: inline-block
+		border: 1px solid #333
+		border-radius: 5px
+		width: 1.3em
+		height: 1.2em
+	&:checked:before
+		border-color: #015254
+		background: url('~weblobby/img/checkmark.png');
+		background-size: contain
+	&:focus
+		outline: none
+
+button
+	+chiliButton
+	font-family: $mainFont
+	background: transparent
+	background-clip: padding-box
+	color: white
+	outline: none
+	&:disabled
+		color: gray
+	&:disabled:hover
+		text-shadow: none
+
+button:hover
+	text-shadow: 0 0 8px white
+
+button:active:not(:disabled)
+	background-image: linear-gradient(to bottom, #222, #333)
+	border: 2px solid transparent
+	border-radius: 6px
+
+
+::-moz-focus-inner
+	border: 0
+
+/* Let's get this party started */
+
+::-webkit-scrollbar
+	width: 9px
+
+::-webkit-scrollbar-track
+	border-left: 1px solid #333
+	border-right: 1px solid #333
+ 
+::-webkit-scrollbar-thumb
+	+chiliThumb
+	width: 9px

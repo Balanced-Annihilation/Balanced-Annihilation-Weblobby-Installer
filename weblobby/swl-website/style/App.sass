@@ -1,0 +1,157 @@
+@import globals
+@import sizing
+@import chili
+
+$navHeight: 4.0em
+$navBottomMargin: 1.2em
+
+.appContent > nav
+	+setHeight($navHeight)
+	font-family: $titleFont
+	padding: 0.5em
+	padding-top: 0
+	margin: 0 0.3em
+	margin-bottom: $navBottomMargin
+	-webkit-user-select: none
+	> span
+		display: inline-block
+		padding: 0.3em 0.8em 0.5em 0.8em
+		position: relative
+		cursor: pointer
+		color: #ffffee
+		font-size: 1.4em
+		letter-spacing: 0.08em
+		white-space: nowrap
+		text-overflow: ellipsis
+		overflow: hidden
+		// min-wdith to prevent stray ellipsis on Chat and Help tabs.
+		min-width: 2.9em
+		max-width: 40vw
+		background-color: #1f1f1f
+		border: 1px solid #5a5a5a
+		border-top: none
+		&:first-child
+			border-bottom-left-radius: 1em
+		&:last-child
+			border-bottom-right-radius: 1em
+	> span:hover
+		text-shadow: 0 0 6px #aaa
+		.close
+			color: #E4E4E4
+	> span.selected
+		background-color: #147D80
+	> span.closable
+		padding-right: 1.2em
+	:not(.selected) .attention
+		color: #F68B44
+	.close
+		color: #439092
+		position: absolute
+		font-size: 1.5em
+		top: -0.12em
+		right: 0.15em
+		transition-property: color
+		transition-duration: 100ms
+
+// Layout
+
+$downloadBarHeight: 10em
+$downloadBarTransitionDuration: 200ms
+
+.homeScreen
+	$homeTopHeight: 6.5em
+	+setHeight(100%)
+	.homeScreenTop
+		+setHeight($homeTopHeight)
+	.homeScreenMiddle
+		+setHeight(calc(100% - #{$homeTopHeight}))
+		overflow: auto
+
+.screenMain
+	+setHeight(calc(100% - #{$navHeight} - #{$navBottomMargin}))
+
+.appContent
+	height: 100%
+	.downloadList
+		position: absolute
+		// Hack to prevent the border from overlapping with the tabs.
+		top: -7px
+		left: 0
+		right: 0
+		transition-property: height
+		transition-duration: $downloadBarTransitionDuration
+		height: 0
+		box-sizing: border-box
+
+.appContent.showingDownloads
+	.downloadList
+		height: $downloadBarHeight
+		top: 0
+	.topRight
+		top: $downloadBarHeight
+		.userLabel
+			display: none
+
+// Downloads and Connect buttons, GameInfo status.
+
+.appContent .topRight
+	position: absolute
+	top: 0
+	right: 5px
+	transition-property: top
+	transition-duration: $downloadBarTransitionDuration
+	> *
+		float: left
+	.gameInfoStatus
+		font-size: 0.9em
+		margin-right: 2em
+		margin-top: 0.2em
+		img
+			position: relative
+			top: 0.3em
+			margin-right: 0.3em
+	.userLabel
+		position: absolute
+		top: 2.8em
+		right: 0.7em
+
+.appContent .topRight .topRightButtons
+	background: #111
+	border: 1px solid #444
+	border-top: none
+	border-bottom-left-radius: 8px
+	border-bottom-right-radius: 8px
+	button
+		img
+			vertical-align: middle
+			height: 12px
+			width: 12px
+		font-size: 0.85em
+		color: #ccc
+		border: none
+		border-left: 1px solid #444
+		height: 2.5em
+	button:first-child
+		border-left: none
+	button:active
+		border: none
+
+// User agreement text.
+
+.agreementText
+	white-space: pre-wrap
+	max-height: 15em
+	overflow: auto
+
+// Pop-up
+
+.dialog
+	button
+		margin: 0.8em auto 0 auto
+		display: block
+		font-size: 1.4em
+		font-weight: bold
+		border: 1px solid #5B7A7B
+		color: #7CDFE2
+		padding: 0.5em 1.5em
+		border-radius: 0.8em
