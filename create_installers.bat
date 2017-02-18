@@ -1,0 +1,1 @@
+iscc "setup.iss"
