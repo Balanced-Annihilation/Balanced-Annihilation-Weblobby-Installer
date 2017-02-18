@@ -1,0 +1,3 @@
+[submodule "swl-website"]
+	path = swl-website
+	url = https://github.com/Balanced-Annihilation/swl-website.git

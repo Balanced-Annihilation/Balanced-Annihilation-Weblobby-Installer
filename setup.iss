@@ -21,12 +21,12 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\tzaeru\Documents\ba-lobby\license.txt
-InfoBeforeFile=C:\Users\tzaeru\Documents\ba-lobby\inf_before_install.txt
-InfoAfterFile=C:\Users\tzaeru\Documents\ba-lobby\inf_after_install.txt
-OutputDir=C:\Users\tzaeru\Documents\ba-lobby\output
+LicenseFile=license.txt
+InfoBeforeFile=inf_before_install.txt
+InfoAfterFile=inf_after_install.txt
+OutputDir=output
 OutputBaseFilename=Install Balanced Annihilation
-SetupIconFile=C:\Users\tzaeru\Documents\ba-lobby\icons\ba_setup.ico
+SetupIconFile=icons\ba_setup.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -37,14 +37,24 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\tzaeru\Documents\ba-lobby\weblobby\weblobby.exe"; DestDir: "{app}\weblobby"; Flags: ignoreversion
-Source: "C:\Users\tzaeru\Documents\ba-lobby\weblobby\*"; Excludes: "node_modules\*,.git\*"; DestDir: "{app}\weblobby"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "weblobby\weblobby.exe"; DestDir: "{app}\weblobby"; Flags: ignoreversion
+Source: "weblobby\*"; Excludes: "node_modules\*,.git\*"; DestDir: "{app}\weblobby"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "swl-website\css\*"; DestDir: "{app}\weblobby\ba_local_website\css"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "swl-website\img\*"; DestDir: "{app}\weblobby\ba_local_website\img"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "swl-website\pr-downloader\*"; DestDir: "{app}\weblobby\ba_local_website\pr-downloader"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "swl-website\sound\*"; DestDir: "{app}\weblobby\ba_local_website\sound"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "swl-website\weblobby.bundle.js"; DestDir: "{app}\weblobby\ba_local_website"; Flags: ignoreversion
+Source: "swl-website\index.html"; DestDir: "{app}\weblobby\ba_local_website"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/swl-website/index.html"""
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; Parameters: "-url ""file:///{app}/weblobby/swl-website/index.html"""
-Name: "{app}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/swl-website/index.html"""
+Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/ba_local_websiteindex.html"""
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; Parameters: "-url ""file:///{app}/weblobby/ba_local_website/index.html"""
+Name: "{app}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/ba_local_website/index.html"""
+
+Name: "{commonprograms}\{#MyAppName} Offline"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/ba_local_websiteindex.html"""
+Name: "{commondesktop}\{#MyAppName} Offline"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; Parameters: "-url ""file:///{app}/weblobby/ba_local_website/index.html"""
+Name: "{app}\{#MyAppName} Offline"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/ba_local_website/index.html"""
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent; Parameters: "-url ""file:///{app}/weblobby/swl-website/index.html"""
