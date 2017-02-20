@@ -1,3 +1,6 @@
 [submodule "swl-website"]
 	path = swl-website
 	url = https://github.com/Balanced-Annihilation/swl-website.git
+[submodule "weblobby"]
+	path = weblobby
+	url = https://github.com/springweblobby/swl-qt.git
