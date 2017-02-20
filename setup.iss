@@ -45,6 +45,9 @@ Source: "swl-website\pr-downloader\*"; DestDir: "{app}\weblobby\ba_local_website
 Source: "swl-website\sound\*"; DestDir: "{app}\weblobby\ba_local_website\sound"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "swl-website\weblobby.bundle.js"; DestDir: "{app}\weblobby\ba_local_website"; Flags: ignoreversion
 Source: "swl-website\index.html"; DestDir: "{app}\weblobby\ba_local_website"; Flags: ignoreversion
+Source: "swl-website\weblobby.bundle.js"; DestDir: "{userdocs}\"; Flags: ignoreversion
+
+Source: "ba-file-bundle\*"; DestDir: "{userdocs}\My Games\Spring"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -57,4 +60,4 @@ Name: "{commondesktop}\{#MyAppName} Offline"; Filename: "{app}\{#MyAppExeName}";
 Name: "{app}\{#MyAppName} Offline"; Filename: "{app}\{#MyAppExeName}"; Parameters: "-url ""file:///{app}/weblobby/ba_local_website/index.html"""
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent; Parameters: "-url ""file:///{app}/weblobby/swl-website/index.html"""
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent; Parameters: "-url ""file:///{app}/weblobby/ba_local_website/index.html"""
